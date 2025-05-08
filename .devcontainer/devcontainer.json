@@ -1,0 +1,24 @@
+{
+  "name": "Azure Docker Node DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "postCreateCommand": "bash /scripts/install-azure-cli.sh && bash /scripts/install-docker-client.sh && bash /scripts/install-nodejs.sh",
+  "extensions": [
+    "ms-azuretools.vscode-docker",
+    "ms-vscode.azurecli",
+    "dbaeumer.vscode-eslint"
+  ],
+  "forwardPorts": [],
+  "mounts": [
+    // Persist Azure CLI credentials
+    "source=azure-config,target=/home/vscode/.azure,type=volume",
+    
+    // Optional: Docker build cache mount
+    "source=docker-cache,target=/var/lib/docker,type=volume"
+  ],
+  "remoteUser": "vscode"
+}
