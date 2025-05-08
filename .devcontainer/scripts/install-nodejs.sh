@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/bash 
 set -e
 
-echo "Installing Node.js..."
-curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
-echo "Node.js $(node -v) installed."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+source $NVM_DIR/nvm.sh
+nvm install v20.13.0
